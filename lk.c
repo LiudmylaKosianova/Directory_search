@@ -19,11 +19,28 @@ void printFilePaht(const char *dirName){
     closedir(folder);
 }
 
+int calculateElement(const char *dirName){
+    DIR *folder;
+    struct dirent *file;
+    int a;
+
+    folder = opendir(dirName);
+
+    while( (file = readdir(folder)) != NULL ){
+        a++;
+    }
+
+    closedir(folder);
+    return a;
+
+}
+
 
 int main(){     
     
     //printFilePaht("/home/cyan/Downloads/");
     printFilePaht(".");
+    printf("There are %d files\n", calculateElement("."));
 
     return 0;
 }
