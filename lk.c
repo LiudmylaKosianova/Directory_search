@@ -3,26 +3,27 @@
 #include <unistd.h>
 
 
-
-int main(){
-
+void printFilePaht(const char *dirName){
     DIR *folder;
     struct dirent *file;
     char dirPath[1000];
 
     getcwd(dirPath, sizeof(dirPath));
 
-    //folder = opendir(".");
-    folder = opendir("/home/cyan/Downloads/");
+    folder = opendir(dirName);
 
     while( (file = readdir(folder)) != NULL ){
-        printf("File name: %s\n", file->d_name);
-        char path[1500];
-
         printf("File path: %s/%s\n", dirPath, file->d_name);
     }
 
     closedir(folder);
+}
+
+
+int main(){     
+    
+    //printFilePaht("/home/cyan/Downloads/");
+    printFilePaht(".");
 
     return 0;
 }
