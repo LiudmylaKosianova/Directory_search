@@ -50,4 +50,15 @@ void *T_calculateElement(void *dirName){
 
 }
 
+void help_user(){
+    printf("Program: \tDirectory_search\n\n");
+    printf("Description: \tCounts and prints file names in a folder.\n");
+    printf("\t\tTakes the folder path as an input\n\n");
+    printf("Example: \t./directory_search \".\"");
+    printf("\n\t\tthis command will print the items paths and the total number\n");
+    printf("\t\tof the items in the current directory\n");
+    
+
+}
+
  

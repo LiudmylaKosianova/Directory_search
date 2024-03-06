@@ -3,5 +3,6 @@
 
 void *T_printFilePaht(void *dirName);
 void *T_calculateElement(void *dirName);
+void help_user();
 
 #endif
