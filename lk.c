@@ -77,20 +77,42 @@ void *T_printFilePaht(void *dirName){
     return NULL;
 }
 
+void *T_calculateElement(void *dirName){
+    DIR *folder;
+    struct dirent *file;
+    int a;
+    char *new_dirName = (char*)dirName;
 
+    folder = opendir(new_dirName);
+    if(folder == NULL){
+        perror("Can't open directory\n");
+        return NULL;
+    }
+
+    while( (file = readdir(folder)) != NULL ){
+        a++;
+    }
+    closedir(folder);
+    printf("There are %d items in directory %s\n", a, new_dirName);
+    return NULL;
+
+}
 
 int main(){ 
 
     pthread_t thread1;
+    pthread_t thread2;
     // int value3 = 3;
     // char b[] = "b string";
     //pthread_create(&thread1, NULL,threefive,(void*) &value3);
     // pthread_create(&thread1, NULL, threefive, (void*) b);
     // pthread_join(thread1, NULL);
-    char name[] = ".e";
+    char name[] = ".";
     char cyan[] = "/home/cyan/Downloads";
-    pthread_create(&thread1, NULL, T_printFilePaht, (void*) name);
+    pthread_create(&thread1, NULL, T_printFilePaht, (void*) cyan);
+    pthread_create(&thread2, NULL, T_calculateElement, (void*) cyan);
     pthread_join(thread1,NULL);
+    pthread_join(thread2,NULL);
     
 
     
